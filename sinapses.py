@@ -96,10 +96,10 @@ def train_model(texts, labels):
     model.fit(
         X_train, y_train,
         validation_data=(X_test, y_test),
-        epochs=2, batch_size=100,
+        epochs=150, batch_size=100,
         callbacks=[
             ModelCheckpoint(filepath='modelo/modelo_cnn_h5.keras', monitor='val_accuracy', save_best_only=True),
-            EarlyStopping(monitor='val_accuracy', patience=4)
+            EarlyStopping(monitor='val_accuracy', patience=4, verbose=1, start_from_epoch=30)
         ]
     )
 
